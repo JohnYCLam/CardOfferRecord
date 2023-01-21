@@ -49,7 +49,7 @@ fun CardHomeScreen(navController: NavController) {
                 )
 
                 Column(horizontalAlignment = Alignment.Start) {
-                    Text(text = "Bank: DBS Bank (Hong Kong) Limited")
+                    Text(text = "DBS Bank (Hong Kong) Limited")
                     Text(text = "Application Date: Sep 1, 2022")
                     Text(text = "Approval Date: Sep 15, 2022")
 

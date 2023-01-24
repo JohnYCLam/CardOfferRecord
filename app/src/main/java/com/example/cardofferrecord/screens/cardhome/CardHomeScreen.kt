@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.cardofferrecord.R
+import com.example.cardofferrecord.navigation.CardScreen
 
 @Composable
 fun CardHomeScreen(navController: NavController) {
@@ -29,7 +30,7 @@ fun CardHomeScreen(navController: NavController) {
             }
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO*/ }) {
+            FloatingActionButton(onClick = { navController.navigate(CardScreen.CardAddScreen.name) }) {
 
             }
         }

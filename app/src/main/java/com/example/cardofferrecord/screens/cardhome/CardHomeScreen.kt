@@ -1,5 +1,6 @@
 package com.example.cardofferrecord.screens.cardhome
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -8,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -20,7 +22,7 @@ import com.example.cardofferrecord.R
 @Composable
 fun CardHomeScreen(navController: NavController) {
 
-    Scaffold(
+    Scaffold(modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar() {
 
@@ -43,7 +45,7 @@ fun CardHomeScreen(navController: NavController) {
                     painter = painterResource(id = R.drawable.dbs_blackworldcard),
                     contentDescription = "Card Image",
                     modifier = Modifier
-                        .width(300.dp)
+                        .width(320.dp)
                         .padding(top = 30.dp, bottom = 0.dp, start = 6.dp, end = 6.dp)
                         .clip(shape = RoundedCornerShape(20.dp)),
                     //alignment = Alignment.BottomCenter
@@ -60,11 +62,11 @@ fun CardHomeScreen(navController: NavController) {
                 
                 Spacer(modifier = Modifier.padding(6.dp))
 
-                Column(horizontalAlignment = Alignment.Start,
-                ) {
-                    Card() {
+                Column() {
+                    Card(modifier = Modifier.width(300.dp),
+                        border = BorderStroke(width = 1.dp, color = Color.Gray)) {
 
-                        Column() {
+                        Column(modifier = Modifier.padding(6.dp)) {
                             Text(text = "Card Info")
                             Text(text = "Bank: DBS Bank (Hong Kong) Limited")
                             Text(text = "Application Date: Sep 1, 2022")
@@ -75,7 +77,7 @@ fun CardHomeScreen(navController: NavController) {
 
                     Spacer(modifier = Modifier.padding(6.dp))
 
-                    Card() {
+                    Card(modifier = Modifier.width(300.dp)) {
 
                         Column() {
                             Text(text = "3rd Party Welcome Offer")
@@ -85,13 +87,14 @@ fun CardHomeScreen(navController: NavController) {
                             Text(text = "Offer Detail: HKD 1,000 Apple Gift Card")
                             Text(text = "Spending Condition: N/A")
                             Text(text = "Period Condition: N/A")
+                            Text(text = "Fulfillment Date: By 31 Dec, 2022")
 
                         }
                     }
 
                     Spacer(modifier = Modifier.padding(6.dp))
 
-                    Card() {
+                    Card(modifier = Modifier.width(300.dp)) {
 
                         Column() {
                             Text(text = "Bank Welcome Offer")
@@ -100,7 +103,7 @@ fun CardHomeScreen(navController: NavController) {
                             Text(text = "Offer Detail: 10,000 miles")
                             Text(text = "Spending Condition: HKD 5,000")
                             Text(text = "Period Condition: Within 60 days")
-
+                            Text(text = "Fulfillment Date: By 31 Dec, 2022")
                         }
                     }
                 }

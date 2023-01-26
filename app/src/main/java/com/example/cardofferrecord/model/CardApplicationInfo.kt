@@ -8,7 +8,7 @@ import java.util.*
 @Entity(tableName = "card_application_info_tbl")
 data class CardApplicationInfo(
     @PrimaryKey
-    val id: UUID = UUID.randomUUID(),
+    val id: String,
 
     @ColumnInfo(name = "card_image_id")
     val cardImageId: Int,
@@ -24,4 +24,6 @@ data class CardApplicationInfo(
 
     @ColumnInfo(name = "approval_date")
     val approvalDate: Date
+
+
 )

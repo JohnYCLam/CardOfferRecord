@@ -13,5 +13,5 @@ class CardOfferRepository @Inject constructor(private val cardOfferDao: CardOffe
     suspend fun updateCardOffer(cardApplicationInfo: CardApplicationInfo) = cardOfferDao.update(cardApplicationInfo)
     suspend fun deleteCardOffer(cardApplicationInfo: CardApplicationInfo) = cardOfferDao.deleteCardApplicationInfo(cardApplicationInfo)
     suspend fun deleteAllCardOffer(cardApplicationInfo: CardApplicationInfo) = cardOfferDao.deleteAll()
-    fun getAllCardOffer(): Flow<List<CardApplicationInfo>> = cardOfferDao.getCardApplication().flowOn(Dispatchers.IO).conflate()
+    //fun getAllCardOffer(): Flow<List<CardApplicationInfo>> = cardOfferDao.getCardApplication().flowOn(Dispatchers.IO).conflate()
 }

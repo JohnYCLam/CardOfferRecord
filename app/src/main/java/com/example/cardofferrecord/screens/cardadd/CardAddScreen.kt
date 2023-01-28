@@ -1,6 +1,5 @@
 package com.example.cardofferrecord.screens.cardadd
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.util.Log
 import android.widget.DatePicker
@@ -21,8 +20,7 @@ import com.example.cardofferrecord.model.WelcomeOffer
 import java.text.SimpleDateFormat
 import java.util.*
 
-@SuppressLint("UnrememberedMutableState")
-@OptIn(ExperimentalMaterialApi::class)
+
 @Composable
 fun CardAddScreen(navController: NavController, viewModel: CardAddScreenViewModel = hiltViewModel()) {
     Scaffold(modifier = Modifier.fillMaxSize(),
@@ -156,6 +154,13 @@ fun CardAddScreen(navController: NavController, viewModel: CardAddScreenViewMode
             DatePicker(dateInput = thirdPartyOfferDateFrom)
             DatePicker(dateInput = thirdPartyOfferDateTo)
             TextField(
+                value = thirdPartyOfferDetail.value,
+                label = {
+                    Text(text = "Offer Detail")
+                },
+                onValueChange = { thirdPartyOfferDetail.value = it }
+            )
+            TextField(
                 value = thirdPartyOfferSpendingCondition.value,
                 label = {
                     Text(text = "Spending Condition")
@@ -169,6 +174,13 @@ fun CardAddScreen(navController: NavController, viewModel: CardAddScreenViewMode
             //Bank Welcome Offer
             DatePicker(dateInput = bankOfferDateFrom)
             DatePicker(dateInput = bankOfferDateTo)
+            TextField(
+                value = bankOfferDetail.value,
+                label = {
+                    Text(text = "Offer Detail")
+                },
+                onValueChange = { bankOfferDetail.value = it }
+            )
             TextField(value = bankOfferSpendingCondition.value, label = {
                 Text(text = "Spending Condition")},  onValueChange = {bankOfferSpendingCondition.value = it})
             TextField(value = bankOfferPeriodCondition.value, label = {

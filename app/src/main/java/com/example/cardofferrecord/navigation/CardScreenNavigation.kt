@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cardofferrecord.screens.cardadd.CardAddScreen
 import com.example.cardofferrecord.screens.cardadd.CardAddScreenViewModel
 import com.example.cardofferrecord.screens.cardhome.CardHomeScreen
+import com.example.cardofferrecord.screens.cardhome.CardHomeScreenViewModel
 import com.example.cardofferrecord.screens.cardupdate.CardUpdateScreen
 
 @Composable
@@ -15,7 +16,8 @@ fun CardScreenNavigation() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = CardScreen.CardHomeScreen.name) {
         composable(CardScreen.CardHomeScreen.name) {
-            CardHomeScreen(navController = navController)
+            val cardHomeScreenViewModel = hiltViewModel<CardHomeScreenViewModel>()
+            CardHomeScreen(navController = navController, viewModel = cardHomeScreenViewModel)
         }
 
         composable(CardScreen.CardAddScreen.name) {

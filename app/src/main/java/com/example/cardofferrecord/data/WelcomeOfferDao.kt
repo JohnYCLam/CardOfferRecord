@@ -7,6 +7,9 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface WelcomeOfferDao {
 
+    @Query("SELECT * from welcome_offer_tbl")
+    fun getAllWelcomeOffer(): Flow<List<WelcomeOffer>>
+
     @Query("SELECT * from welcome_offer_tbl where card_application_id =:id")
     fun getAllWelcomeOfferByCard(id: String): Flow<List<WelcomeOffer>>
 

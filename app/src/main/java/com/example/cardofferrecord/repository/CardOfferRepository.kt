@@ -19,6 +19,8 @@ class CardOfferRepository @Inject constructor(private val cardApplicationInfoDao
     fun getAllCardApplication(): Flow<List<CardApplicationInfo>> = cardApplicationInfoDao.getAllCardApplication().flowOn(
         Dispatchers.IO).conflate()
 
+    fun getAllWelcomeOffer(): Flow<List<WelcomeOffer>> = welcomeOfferDao.getAllWelcomeOffer().flowOn(
+        Dispatchers.IO).conflate()
     fun getAllWelcomeOfferByCard(cardApplicationId: String): Flow<List<WelcomeOffer>> = welcomeOfferDao.getAllWelcomeOfferByCard(cardApplicationId).flowOn(
         Dispatchers.IO).conflate()
     suspend fun getOneWelcomeOfferByCard(welcomeOfferId: String) = welcomeOfferDao.getOneWelcomeOfferByCard(welcomeOfferId)

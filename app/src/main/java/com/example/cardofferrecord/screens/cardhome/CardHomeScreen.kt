@@ -5,7 +5,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -44,13 +46,18 @@ fun CardHomeScreen(navController: NavController, viewModel: CardHomeScreenViewMo
         }
     ) {
         Surface(modifier = Modifier.fillMaxSize()) {
-            LazyRow{
+            LazyRow(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.Top){
                 items(cardApplications) { cardApplication ->
+                    val thirdPartyWelcomeOffer = welcomeOffers.filter { it.cardApplicationId == cardApplication.id && it.provider != "Bank"}[0]
+                    val bankWelcomeOffer = welcomeOffers.filter { it.cardApplicationId == cardApplication.id && it.provider == "Bank"}[0]
 
                     Column(
-                        modifier = Modifier.padding(4.dp),
+                        modifier = Modifier
+                            .padding(4.dp)
+                            .verticalScroll(rememberScrollState()),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Top
+
                     ) {
 
                         Image(
@@ -82,7 +89,7 @@ fun CardHomeScreen(navController: NavController, viewModel: CardHomeScreenViewMo
                                     Text(text = "Card Info")
                                     Text(text = "Bank: ${cardApplication.cardBank}")
                                     Text(text = "Application Date: ${formatDate(cardApplication.applicationDate)} ")
-                                    Text(text = "Approval Date: Sep 15, 2022")
+                                    Text(text = "Approval Date: ${formatDate(cardApplication.approvalDate)}")
 
                                 }
                             }
@@ -93,13 +100,13 @@ fun CardHomeScreen(navController: NavController, viewModel: CardHomeScreenViewMo
 
                                 Column() {
                                     Text(text = "3rd Party Welcome Offer")
-                                    Text(text = "Provider: 小斯")
-                                    Text(text = "Offer Date From: Aug 31, 2022")
-                                    Text(text = "Offer Date To: 4 Sep, 2022")
-                                    Text(text = "Offer Detail: HKD 1,000 Apple Gift Card")
-                                    Text(text = "Spending Condition: N/A")
-                                    Text(text = "Period Condition: N/A")
-                                    Text(text = "Fulfillment Date: By 31 Dec, 2022")
+                                    Text(text = "Provider: ${thirdPartyWelcomeOffer.provider}")
+                                    Text(text = "Offer Date From: ${formatDate(thirdPartyWelcomeOffer.offerDateFrom)}")
+                                    Text(text = "Offer Date To: ${formatDate(thirdPartyWelcomeOffer.offerDateTo)}")
+                                    Text(text = "Offer Detail: ${thirdPartyWelcomeOffer.offerDetail}")
+                                    Text(text = "Spending Condition: ${thirdPartyWelcomeOffer.spendingCondition}")
+                                    Text(text = "Period Condition: ${thirdPartyWelcomeOffer.periodCondition}")
+                                    Text(text = "Fulfillment Date: By ${thirdPartyWelcomeOffer.fulfillmentDate}")
 
                                 }
                             }
@@ -110,12 +117,12 @@ fun CardHomeScreen(navController: NavController, viewModel: CardHomeScreenViewMo
 
                                 Column() {
                                     Text(text = "Bank Welcome Offer")
-                                    Text(text = "Offer Date From: Aug 31, 2022")
-                                    Text(text = "Offer Date To: 4 Sep, 2022")
-                                    Text(text = "Offer Detail: 10,000 miles")
-                                    Text(text = "Spending Condition: HKD 5,000")
-                                    Text(text = "Period Condition: Within 60 days")
-                                    Text(text = "Fulfillment Date: By 31 Dec, 2022")
+                                    Text(text = "Offer Date From: ${bankWelcomeOffer.offerDateFrom}")
+                                    Text(text = "Offer Date To: ${bankWelcomeOffer.offerDateTo}")
+                                    Text(text = "Offer Detail: ${bankWelcomeOffer.offerDetail}")
+                                    Text(text = "Spending Condition: ${bankWelcomeOffer.spendingCondition}")
+                                    Text(text = "Period Condition: ${bankWelcomeOffer.periodCondition}")
+                                    Text(text = "Fulfillment Date: By ${bankWelcomeOffer.fulfillmentDate}")
                                 }
                             }
                         }

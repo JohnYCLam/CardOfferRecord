@@ -11,19 +11,19 @@ data class CardApplicationInfo(
     val id: String,
 
     @ColumnInfo(name = "card_image_id")
-    val cardImageId: Int,
+    var cardImageId: Int,
 
     @ColumnInfo(name = "card_name")
-    val cardName: String,
+    var cardName: String,
 
     @ColumnInfo(name = "card_bank")
-    val cardBank: String,
+    var cardBank: String,
 
     @ColumnInfo(name = "application_date")
-    val applicationDate: Date,
+    var applicationDate: Date,
 
     @ColumnInfo(name = "approval_date")
-    val approvalDate: Date
+    var approvalDate: Date
 
 
 )

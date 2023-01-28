@@ -11,5 +11,6 @@ import com.example.cardofferrecord.util.UUIDConverter
 @Database(entities = [CardApplicationInfo::class, WelcomeOffer::class], version = 1, exportSchema = false)
 @TypeConverters(DateConverter::class, UUIDConverter::class)
 abstract class CardOfferDatabase: RoomDatabase() {
-    abstract fun cardOfferDao(): CardOfferDao
+    abstract fun cardApplicationInfoDao(): CardApplicationInfoDao
+    abstract fun welcomeOfferDao(): WelcomeOfferDao
 }

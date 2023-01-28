@@ -2,8 +2,9 @@ package com.example.cardofferrecord.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.cardofferrecord.data.CardOfferDao
+import com.example.cardofferrecord.data.CardApplicationInfoDao
 import com.example.cardofferrecord.data.CardOfferDatabase
+import com.example.cardofferrecord.data.WelcomeOfferDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,8 +18,13 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideCardOfferDao(cardOfferDatabase: CardOfferDatabase): CardOfferDao =
-        cardOfferDatabase.cardOfferDao()
+    fun cardApplicationInfoDao(cardOfferDatabase: CardOfferDatabase): CardApplicationInfoDao =
+        cardOfferDatabase.cardApplicationInfoDao()
+
+    @Singleton
+    @Provides
+    fun welcomeOfferDao(cardOfferDatabase: CardOfferDatabase): WelcomeOfferDao =
+        cardOfferDatabase.welcomeOfferDao()
 
     @Singleton
     @Provides

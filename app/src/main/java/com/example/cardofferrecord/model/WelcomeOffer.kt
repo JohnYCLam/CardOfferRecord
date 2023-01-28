@@ -15,23 +15,23 @@ data class WelcomeOffer(
     val cardApplicationId: String,
 
     @ColumnInfo(name = "provider")
-    val provider: String,
+    var provider: String,
 
     @ColumnInfo(name = "offer_date_from")
-    val offerDateFrom: Date,
+    var offerDateFrom: Date,
 
     @ColumnInfo(name = "offer_date_to")
-    val offerDateTo: Date,
+    var offerDateTo: Date,
 
     @ColumnInfo(name = "offer_detail")
-    val offerDetail: String,
+    var offerDetail: String,
 
     @ColumnInfo(name = "spending_condition")
-    val spendingCondition: String,
+    var spendingCondition: String,
 
     @ColumnInfo(name = "period_condition")
-    val periodCondition: String,
+    var periodCondition: String,
 
     @ColumnInfo(name = "fulfillment_date")
-    val fulfillmentDate: Date
+    var fulfillmentDate: Date
 )
